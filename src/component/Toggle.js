@@ -35,7 +35,6 @@ const StyledToggleWrap = styled.div`
     border-radius: 15px;
     background-color: gray;
     padding: 5px;
-    margin: 0 auto;
     cursor: pointer;
 
     &.active {

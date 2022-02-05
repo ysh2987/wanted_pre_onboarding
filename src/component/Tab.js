@@ -50,7 +50,6 @@ const StyledTabWrap = styled.div`
     height: 50px;
     text-align: center;
     line-height: 50px;
-    list-style-type: none;
     color: #fff;
     cursor: pointer;
     &.active {

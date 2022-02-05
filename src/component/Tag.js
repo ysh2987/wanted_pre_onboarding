@@ -1,26 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import Title from "../utills/Title";
 import Container from "../utills/Container";
 import Content from "../utills/Content";
 
 function Tag() {
-  const [active, setActive] = useState(0);
-  const activeClick = (index) => {
-    setActive(index);
+  const [items, setItem] = useState([{ id: 0, text: "oasdadasdne" }]);
+  const nextId = useRef(1);
+  const createItem = (e) => {
+    if (e.key !== "Enter" || e.target.value.trim() === "") return;
+    setItem([...items, { id: nextId.current, text: e.target.value }]);
+    nextId.current += 1;
+    e.target.value = "";
   };
-  const tabList = [
-    { id: 0, title: "Tab1", text: "one" },
-    { id: 1, title: "Tab2", text: "Two" },
-    { id: 2, title: "Tab3", text: "Three" },
-  ];
+  const removeItem = (id) => {
+    setItem(items.filter((item) => item.id !== id));
+  };
+
   return (
     <Container>
       <Title text="Tag" />
       <Content>
         <StyledTagWrap>
-          <div>jjang</div>
-          <input type="text" placeholder="Press enter to add tags" />
+          {items.map((item) => {
+            return (
+              <li key={item.id}>
+                {item.text}
+                <span onClick={() => removeItem(item.id)}>X</span>
+              </li>
+            );
+          })}
+          <input
+            onKeyPress={(e) => createItem(e)}
+            type="text"
+            placeholder="Press enter to add tags"
+          />
         </StyledTagWrap>
       </Content>
     </Container>
@@ -30,22 +44,36 @@ function Tag() {
 export default Tag;
 
 const StyledTagWrap = styled.div`
-  width: 400px;
+  width: 80%;
+  max-height: 105px;
+  overflow-y: auto;
   display: flex;
+  flex-wrap: wrap;
   text-align: center;
   padding: 5px;
   border: 1px solid;
   border-radius: 5px;
-  margin: 0 auto;
-  div {
-    height: 40px;
-    line-height: 36px;
+  li {
+    display: flex;
+    align-items: center;
+    height: 30px;
     padding: 5px;
     border-radius: 5px;
     background-color: #000066;
     color: #fff;
+    margin: 0 5px 5px 0;
   }
   input {
     border: none;
+    height: 40px;
+    outline: none;
+  }
+  span {
+    margin-left: 10px;
+    background: #fff;
+    color: black;
+    border-radius: 50%;
+    width: 25px;
+    cursor: pointer;
   }
 `;

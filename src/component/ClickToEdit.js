@@ -1,24 +1,45 @@
 import React, { useState } from "react";
-// import styled from "styled-components";
+import styled from "styled-components";
 import Title from "../utills/Title";
 import Container from "../utills/Container";
 import Content from "../utills/Content";
 
 function ClickToEdit() {
-  const [active, setActive] = useState(0);
-  const activeClick = (index) => {
-    setActive(index);
+  const [text, setText] = useState({
+    name: "최해커",
+    age: "20",
+  });
+  const { name, age } = text;
+  const changeValue = (e) => {
+    const { value, name } = e.target;
+    setText({ ...text, [name]: value });
   };
-  const tabList = [
-    { id: 0, title: "Tab1", text: "one" },
-    { id: 1, title: "Tab2", text: "Two" },
-    { id: 2, title: "Tab3", text: "Three" },
-  ];
+
   return (
     <Container>
       <Title text="ClickToEdit" />
       <Content>
-        <div>클릭</div>
+        <StyledFelxWrap>
+          <label>이름</label>
+          <input
+            name="name"
+            onBlur={(e) => changeValue(e)}
+            type="text"
+            defaultValue={name}
+          />
+        </StyledFelxWrap>
+        <StyledFelxWrap>
+          <label>나이</label>
+          <input
+            name="age"
+            onBlur={(e) => changeValue(e)}
+            type="text"
+            defaultValue={age}
+          />
+        </StyledFelxWrap>
+        <p>
+          이름 {name} 나이 {age}
+        </p>
       </Content>
     </Container>
   );
@@ -26,24 +47,10 @@ function ClickToEdit() {
 
 export default ClickToEdit;
 
-// const StyledTabWrap = styled.div`
-//   ul {
-//     display: flex;
-//     background-color: gray;
-//     align-items: center;
-//   }
-
-//   li {
-//     width: 33.3%;
-//     height: 50px;
-//     text-align: center;
-//     line-height: 50px;
-//     list-style-type: none;
-//     &.active {
-//       background-color: purple;
-//     }
-//   }
-//   p {
-//     text-align: center;
-//   }
-// `;
+const StyledFelxWrap = styled.div`
+  display: flex;
+  margin-top: 20px;
+  label {
+    margin-right: 20px;
+  }
+`;
