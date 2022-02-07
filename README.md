@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# custom-component
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- 원티드 프리온보딩 코스
 
-## Available Scripts
+## 실행 방법
 
-In the project directory, you can run:
+1. 레포지토리 clone
+2. npm install
+3. npm start
 
-### `npm start`
+## Dependencies
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- create-react-app
+- styled-components
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 배포 링크
 
-### `npm test`
+## Toggle.js
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- useState로 버튼의 상태를 boolean으로 관리해 클릭이벤트 발생시 !toggle로 활성화/비활성화
+- toggle true일때 className `active`를 추가해 active일때만 transform 속성과 background-color 속성을 변경 시켰습니다.
 
-### `npm run build`
+## Modal.js
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- useState로 버튼의 상태를 boolean으로 관리해 클릭이벤트 발생시 !modal로 활성화/비활성화
+- toggle true일때 className `active`를 추가해 false일떄 display:none, true일땐 display : block으로 활성화 시켰습니다.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Tab.js
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- 각각 탭의 정보들을 배열 형태로 상태를 관리하여, 클릭 이벤트 발생시 해당탭의 id값을 찾아 active 속성을 추가하였습니다.
 
-### `npm run eject`
+## Tag.js
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- tag 상태를 배열로 관리
+- Enter를 계속 누르고 있는 예외사항을 생각해 Enter 키보드를 뗄경우인 KeyUp이벤트를 사용했습니다.
+- input에 빈 값이나 공백만을 작성하고 Enter를 누르는 예외 사항을 고려해 e.key가 Enter키가 아니거나 빈값일 경우 return으로 이벤트를 취소 시켰습니다.
+- useRef를 사용해 Tag에 item이 생성될떄 item에 부여될 id값을 관리하였습니다.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## AutoComplete.js
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- input list id값과 datalist id값을 일치시키고 option 태그로 AutoComplete될 데이터들을 관리하였습니다.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## ClickToEdit.js
 
-## Learn More
+- 2개의 input이 있지만 인풋 하나당 하나의 상태만 변경시키기 때문에 상태를 {name, age}로 한번에 관리하였습니다.
+- input에 focus가 해제될때 view가 변경되기 때문에 Blur이벤트를 사용하였습니다.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## utils
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- 재사용 되는 Title, Container 컴포넌트들은 childeren, props로 재사용 가능하게 구현하였습니다.

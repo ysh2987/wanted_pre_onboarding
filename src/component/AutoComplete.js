@@ -9,11 +9,7 @@ function AutoComplete() {
     <Container>
       <Title text="AutoComplete" />
       <Content>
-        <StyledInput
-          type="text"
-          list="options"
-          className="border-2 w-4/5 p-1 outline-none"
-        />
+        <StyledInput type="text" list="options" />
         <datalist id="options">
           <option value="antique" />
           <option value="vintage" />

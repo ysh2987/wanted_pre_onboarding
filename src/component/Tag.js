@@ -31,7 +31,7 @@ function Tag() {
             );
           })}
           <input
-            onKeyPress={(e) => createItem(e)}
+            onKeyUp={(e) => createItem(e)}
             type="text"
             placeholder="Press enter to add tags"
           />
