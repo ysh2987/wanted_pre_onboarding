@@ -15,6 +15,8 @@
 
 ## 배포 링크
 
+- [링크](https://ysh2987.github.io/wanted_pre_onboarding/)
+
 ## Toggle.js
 
 - useState로 버튼의 상태를 boolean으로 관리해 클릭이벤트 발생시 !toggle로 활성화/비활성화
